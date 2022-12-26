@@ -67,27 +67,6 @@
         {
             NextNode = nextNode;
         }
-        public void Mostrar()
-        {
-            Console.WriteLine("============================");
-            if (Element == null)
-            {
-                Console.Write("Elemento nulo.");
-            }
-            else
-            {
-                Console.WriteLine(Element.ToString());
-            }
-            if (NextNode == null)
-            {
-                Console.WriteLine("Sig nodo nulo");
-            }
-            else
-            {
-                Console.WriteLine(NextNode.ToString());
-            }
-            Console.WriteLine("============================");
-        }
         #endregion
     }
     public class CListaEnlazada : ILista
@@ -201,7 +180,7 @@
                 Aux.NextNode = new(AuxElement, Aux.NextNode);
             }
         }
-        public void Listar()
+        public virtual void Listar()
         {
             CNodoLista? Aux = Node;
             for (int i = 0; i < Longitud(); i++)
