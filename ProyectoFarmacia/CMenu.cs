@@ -35,7 +35,7 @@ namespace ProyectoFarmacia
             }
             return opcion;
         }
-        public static void MostrarMenu(ListaEnlazada Clientes, ListaEnlazada Productos, ListaEnlazada Ventas)
+        public static void MostrarMenu(CListaEnlazada Clientes, CListaEnlazada Productos, CListaEnlazada Ventas)
         {
             Console.WriteLine("=====================================");
             Console.WriteLine("1.- Agregar Producto");
@@ -53,7 +53,7 @@ namespace ProyectoFarmacia
             int Opcion = ValidarEntero("Debe ingresar un número, entre 1 y 10", 1, 10);
             EjecutarOpcion(Opcion, Clientes, Productos, Ventas);
         }
-        private static void EjecutarOpcion(int opcion, ListaEnlazada Clientes, ListaEnlazada Productos, ListaEnlazada Ventas)
+        private static void EjecutarOpcion(int opcion, CListaEnlazada Clientes, CListaEnlazada Productos, CListaEnlazada Ventas)
         {
             switch (opcion)
             {
@@ -65,13 +65,13 @@ namespace ProyectoFarmacia
                     string nombre = Console.ReadLine();
                     Console.WriteLine("Ingrese la descripcción del producto");
                     string descripcion = Console.ReadLine();
-                    Console.WriteLine("Ingrese la fecha de fabricación");
-                    string fecha_fabricacion = Console.ReadLine();
-                    Console.WriteLine("Ingrese la fecha de vencimiento");
-                    string fecha_vencimiento = Console.ReadLine();
-                    Console.WriteLine("Ingrese el proveedor");
+                    Console.WriteLine("Ingrese la fecha de fabricación en formato dd/mm/yy: ");
+                    DateTime fecha_fabricacion = DateTime.Parse(Console.ReadLine());
+                    Console.WriteLine("Ingrese la fecha de vencimiento en formato dd/mm/yy: ");
+                    DateTime fecha_vencimiento = DateTime.Parse(Console.ReadLine());
+                    Console.WriteLine("Ingrese el proveedor: ");
                     string proveedor = Console.ReadLine();
-                    Console.WriteLine("Ingrese el precio");
+                    Console.WriteLine("Ingrese el precio: ");
                     float precio = int.Parse(Console.ReadLine());
                     CProducto producto_nuevo = new(codigo, nombre, descripcion, fecha_fabricacion, fecha_vencimiento, proveedor, precio);
                     Productos.Agregar(producto_nuevo);
@@ -81,7 +81,7 @@ namespace ProyectoFarmacia
                     Console.Write("Ingrese el codigo del producto: ");
                     codigo = Console.ReadLine();
                     break;
-                case 3:
+                case 3:    
                     Console.Write("Ingrese el codigo del producto: ");
                     codigo = Console.ReadLine();
                     break;

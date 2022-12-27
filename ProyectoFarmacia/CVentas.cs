@@ -1,3 +1,4 @@
+
 namespace ProyectoFarmacia
 {
     public class CVentas{
