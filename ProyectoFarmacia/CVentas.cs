@@ -1,17 +1,17 @@
-
 namespace ProyectoFarmacia
 {
-    public class CVentas{
+    public class CVentas
+    {
         private string? _Codigo_Venta;
         private string? _Codigo_Cliente;
         private CListaEnlazada? _Lista_Productos;
         private string? _Fecha;
         private int? _Monto;
 
-        public string Codigo_Venta { get => _Codigo_Venta; set => _Codigo_Venta = value; }
-        public string Codigo_Cliente { get => _Codigo_Cliente; set => _Codigo_Cliente = value; }
-        public CListaEnlazada Lista_Productos { get => _Lista_Productos; set => _Lista_Productos = value; }
-        public string Fecha { get => _Fecha; set => _Fecha = value; }
+        public string? Codigo_Venta { get => _Codigo_Venta; set => _Codigo_Venta = value; }
+        public string? Codigo_Cliente { get => _Codigo_Cliente; set => _Codigo_Cliente = value; }
+        public CListaEnlazada? Lista_Productos { get => _Lista_Productos; set => _Lista_Productos = value; }
+        public string? Fecha { get => _Fecha; set => _Fecha = value; }
         public int? Monto { get => _Monto; set => _Monto = value; }
 
         public CVentas(string codigo_Venta, string codigo_cliente, CListaEnlazada lista_Productos, string fecha, int monto)
@@ -21,6 +21,15 @@ namespace ProyectoFarmacia
             Lista_Productos = lista_Productos;
             Fecha = fecha;
             Monto = monto;
+        }
+
+        public void Monstrar()
+        {
+            Console.WriteLine("Venta: " + Codigo_Venta);
+            Console.WriteLine("Cliente: " + Codigo_Cliente);
+            Console.WriteLine("Productos: " + Lista_Productos);
+            Console.WriteLine("Fecha: " + Fecha);
+            Console.WriteLine("Monto: " + Monto);
         }
 
         public override string ToString()
@@ -39,6 +48,22 @@ namespace ProyectoFarmacia
                 return Ventas.Codigo_Venta == Codigo_Venta;
             }
             return false;
+        }
+
+    }
+
+    public class CListaVentas : CListaEnlazada
+    {
+        public override void Listar()
+        {
+            CNodoLista? Aux = Node;
+            for (int i = 0; i < Longitud(); i++)
+            {
+                Console.WriteLine("------------Ventas{0}--------", i + 1);
+                ((CVentas)Aux.Element).Monstrar();
+                Aux = Aux.NextNode;
+            }
+
         }
     }
 }
