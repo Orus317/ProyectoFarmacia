@@ -5,7 +5,7 @@ namespace ProyectoFarmacia
 {
     public class CMenu
     {
-        private static int ValidarEntero(string message, int low, int high)
+        public static int ValidarEntero(string message, int low, int high)
         {
             // Modulo para validar un entero entre dos límites
             string _opcion = Console.ReadLine();

@@ -4,6 +4,9 @@ using ProyectoFarmacia;
 // Creando lista de productos
 CListaProductos Productos = new();
 
+string[] frutas = { "manzana", "apple", "pera" };
+
+
 //Leyendo el archivo csv
 using (StreamReader reader = new(@".\farmacia.csv", Encoding.GetEncoding("iso-8859-1")))
 {
@@ -30,7 +33,4 @@ using (StreamReader reader = new(@".\farmacia.csv", Encoding.GetEncoding("iso-88
 }
 
 Productos.Listar();
-//object algo = Productos.Iesimo(1, true);
-//CProducto s = (CProducto)((CNodoLista)algo).Element;
-//s.Modificar();
-//s.Mostrar();
+

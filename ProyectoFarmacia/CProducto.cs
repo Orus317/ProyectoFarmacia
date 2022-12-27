@@ -107,6 +107,10 @@
             {
                 return Product.Codigo == Codigo;
             }
+            else if (obj is string ProductName && Nombre != null)
+            {
+                return Nombre.Contains(ProductName);
+            }
             return false;
         }
         // ----------------------------------------------------------------------------------
@@ -131,6 +135,21 @@
             int Position = int.Parse(Console.ReadLine()) - 1;
             CProducto ProductoAModificar = (CProducto)((CNodoLista)Iesimo(Position)).Element;
             ProductoAModificar.Modificar();
+        }
+        public void Buscar(string Element)
+        {
+            Console.WriteLine("¿Qué producto desea buscar?[Puede ingresar código o nombre]: ");
+            int posicion = Ubicacion(Element.ToUpper());
+            if (posicion != -1)
+            {
+                CProducto _ = (CProducto)Iesimo(posicion, true);
+                Console.WriteLine("--------------------PRODUCTO--------------------");
+                _.Mostrar();
+            }
+            else
+            {
+                Console.WriteLine("No se encontró el producto requerido");
+            }
         }
     }
 }
