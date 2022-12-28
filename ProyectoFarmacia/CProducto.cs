@@ -39,7 +39,7 @@
             Console.WriteLine("-------MENU DE MODIFICACION-------");
             Mostrar();
             Console.Write("Que desea modificar: ");
-            int opcion = int.Parse(Console.ReadLine());
+            int opcion = CMenu.ValidarEntero("Solo números entre 1 y 7", 1, 7);
             switch (opcion)
             {
                 case 1:
@@ -151,25 +151,43 @@
         }
         public void Modificar()
         {
-            int Longitud = base.Longitud();
-            Console.Write("Cuál es el elemento que desea modificar de los {0} elementos: ", Longitud);
-            int Position = int.Parse(Console.ReadLine()) - 1;
-            CProducto ProductoAModificar = (CProducto)((CNodoLista)Iesimo(Position)).Element;
+            Console.Write("Cuál es el elemento que desea modificar (puede ingresar código o nombre): ");
+            string ElementToModify = Console.ReadLine();
+            int Position = base.Ubicacion(ElementToModify.ToUpper());
+            CNodoLista Node = (CNodoLista)Iesimo(Position, true);
+            CProducto ProductoAModificar = (CProducto)Node.Element;
             ProductoAModificar.Modificar();
         }
-        public void Buscar(string Element)
+        public void BuscarProducto()
         {
-            Console.WriteLine("¿Qué producto desea buscar?[Puede ingresar código o nombre]: ");
-            int posicion = Ubicacion(Element.ToUpper());
+            Console.Write("¿Qué producto desea buscar?[Puede ingresar código o nombre]: ");
+            string ElementToSearch = Console.ReadLine();
+            int posicion = Ubicacion(ElementToSearch.ToUpper());
             if (posicion != -1)
             {
-                CProducto _ = (CProducto)Iesimo(posicion, true);
+                CNodoLista Node = (CNodoLista)Iesimo(posicion, true);
+                CProducto Element = (CProducto)Node.Element;
                 Console.WriteLine("--------------------PRODUCTO--------------------");
-                _.Mostrar();
+                Element.Mostrar();
             }
             else
             {
                 Console.WriteLine("No se encontró el producto requerido");
+            }
+        }
+        public void EliminarProducto()
+        {
+            Console.Write("¿Qué producto desea eliminar?[Puede ingresar código o nombre]: ");
+            string ProductToEliminate = Console.ReadLine();
+            int position = base.Ubicacion(ProductToEliminate.ToUpper());
+            if (position == -1)
+            {
+                Console.WriteLine("No se encontró el producto que desea eliminar");
+            }
+            else
+            {
+                base.Eliminar(position);
+                Console.WriteLine("Se eliminó correctamente");
             }
         }
     }
