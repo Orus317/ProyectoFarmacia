@@ -118,6 +118,27 @@
     }
     public class CListaProductos : CListaEnlazada
     {
+        public void AgregarProducto()
+        {
+            Console.Write("1. Codigo: ");
+            string _Codigo = Console.ReadLine();
+            Console.Write("2. Nombre: ");
+            string _Nombre = Console.ReadLine();
+            Console.Write("3. Descripcion: ");
+            string _Descripcion = Console.ReadLine();
+            Console.Write("4. Fecha de Fabricacion (en formato dd/mm/yy): ");
+            DateTime _FechaFabricacion = DateTime.Parse(Console.ReadLine());
+            Console.Write("5. Fecha de vencimiento (en formato dd/mm/yy): ");
+            DateTime _FechaVencimiento = DateTime.Parse(Console.ReadLine());
+            Console.Write("6. Proveedor: ");
+            string _Proveedor = Console.ReadLine();
+            Console.Write("7. Precio (S/.): ");
+            float _Precio = CMenu.ValidarFlotante("Números mayores a 0", 0, float.PositiveInfinity);
+            CProducto _ = new(_Codigo, _Nombre, _Descripcion, _FechaFabricacion, _FechaVencimiento, _Proveedor, _Precio);
+            Agregar(_);
+            Console.WriteLine("======================PRODUCTO AÑADIDO======================");
+            _.Mostrar();
+        }
         public override void Listar()
         {
             CNodoLista? Aux = Node;

@@ -87,6 +87,21 @@
     }
     public class CListaClientes : CListaEnlazada
     {
+        public void AgregarCliente()
+        {
+            Console.Write("1. Codigo: ");
+            string _Codigo = Console.ReadLine();
+            Console.Write("2. Nombre: ");
+            string _Nombre = Console.ReadLine();
+            Console.Write("3. Apellido: ");
+            string _Apellido = Console.ReadLine();
+            Console.Write("4. Direccion: ");
+            string _Direccion = Console.ReadLine();
+            CCliente _ = new(_Codigo, _Nombre, _Apellido, _Direccion);
+            Agregar(_);
+            Console.WriteLine("======================CLIENTE AÑADIDO======================");
+            _.Mostrar();
+        }
         public override void Listar()
         {
             CNodoLista? Aux = Node;
