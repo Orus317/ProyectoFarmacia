@@ -34,7 +34,7 @@
             Console.WriteLine("-------MENU DE MODIFICACION-------");
             Mostrar();
             Console.Write("Que desea modificar: ");
-            int opcion = int.Parse(Console.ReadLine());
+            int opcion = CMenu.ValidarEntero("Solo números entre 1 y 4", 1, 4);
             switch (opcion)
             {
                 case 1:
@@ -48,12 +48,12 @@
                     Nombre = s;
                     break;
                 case 3:
-                    Console.Write("Apellido nueva: ");
+                    Console.Write("Apellido nuevo: ");
                     s = Console.ReadLine();
                     Apellido = s;
                     break;
                 case 4:
-                    Console.Write("Direccion: ");
+                    Console.Write("Direccion nueva: ");
                     s = Console.ReadLine();
                     Direccion = s;
                     break;
@@ -79,7 +79,7 @@
             }
             else if (obj is string Text)
             {
-                return Nombre.Contains(Text) || Apellido.Contains(Text);
+                return (Nombre.ToUpper()).Contains(Text) || (Apellido.ToUpper()).Contains(Text) || Codigo.Contains(Text);
             }
             return false;
         }
@@ -114,21 +114,24 @@
         }
         public void Modificar()
         {
-            int Longitud = base.Longitud();
-            Console.Write("Cuál es el cliente que desea modificar de los {0} elementos: ", Longitud);
-            int Position = CMenu.ValidarEntero("Existen " + Longitud.ToString() + " clientes",0, Longitud + 1);
-            CCliente ClienteAModificar = (CCliente)((CNodoLista)Iesimo(Position)).Element;
-            ClienteAModificar.Modificar();
+            Console.Write("Cuál es el cliente que desea modificar (puede ingresar código o nombre): ");
+            string ElementToModify = Console.ReadLine();
+            int Position = base.Ubicacion(ElementToModify.ToUpper());
+            CNodoLista Node = (CNodoLista)Iesimo(Position, true);
+            CCliente ProductoAModificar = (CCliente)Node.Element;
+            ProductoAModificar.Modificar();
         }
-        public void Buscar(string Element)
+        public void Buscar()
         {
-            Console.WriteLine("¿Qué cliente desea buscar?: ");
-            int posicion = Ubicacion(Element.ToUpper());
+            Console.Write("¿Qué cliente desea buscar?[Nombre, Apellido o código]: ");
+            string ElementToSearch = Console.ReadLine();
+            int posicion = Ubicacion(ElementToSearch.ToUpper());
             if (posicion != -1)
             {
-                CProducto _ = (CProducto)Iesimo(posicion, true);
-                Console.WriteLine("--------------------PRODUCTO--------------------");
-                _.Mostrar();
+                CNodoLista Node = (CNodoLista)Iesimo(posicion, true);
+                CCliente Element = (CCliente)Node.Element;
+                Console.WriteLine("--------------------CLIENTE--------------------");
+                Element.Mostrar();
             }
             else
             {
