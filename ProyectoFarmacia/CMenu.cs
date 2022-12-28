@@ -76,9 +76,10 @@ namespace ProyectoFarmacia
             Console.WriteLine("6.- Buscar Cliente");
             Console.WriteLine("7.- Modificar Cliente");
             Console.WriteLine("8.- Registrar Ventas ");
-            Console.WriteLine("9.- Mostrar reporte ventas diarias (reporte diario)");
-            Console.WriteLine("10.- Visualizar Productos.");
-            Console.WriteLine("11.- Visualizar Clientes.");
+            Console.WriteLine("9.- Vesualizar todas las ventas ");
+            Console.WriteLine("10.- Mostrar reporte ventas diarias (reporte diario)");
+            Console.WriteLine("11.- Visualizar Productos.");
+            Console.WriteLine("12.- Visualizar Clientes.");
 
             Console.WriteLine(" -- Ingrese la opción: ");
             int Opcion = ValidarEntero("Debe ingresar un número, entre 1 y 10", 1, 11);
@@ -113,11 +114,15 @@ namespace ProyectoFarmacia
                     Ventas.IngresarVenta();
                     break;
                 case 9:
+                    Ventas.Listar();
                     break;
                 case 10:
-                    Productos.Listar();
+                    Ventas.ListarFecha();
                     break;
                 case 11:
+                    Productos.Listar();
+                    break;
+                case 12:
                     Clientes.Listar();
                     break;
                 default:
