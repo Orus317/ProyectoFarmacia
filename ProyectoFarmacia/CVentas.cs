@@ -4,17 +4,17 @@ namespace ProyectoFarmacia
     {
         private string? _Codigo_Venta;
         private string? _Codigo_Cliente;
-        private CListaEnlazada? _Lista_Productos;
+        private string? _Lista_Productos;
         private string? _Fecha;
         private int? _Monto;
 
         public string? Codigo_Venta { get => _Codigo_Venta; set => _Codigo_Venta = value; }
         public string? Codigo_Cliente { get => _Codigo_Cliente; set => _Codigo_Cliente = value; }
-        public CListaEnlazada? Lista_Productos { get => _Lista_Productos; set => _Lista_Productos = value; }
+        public string? Lista_Productos { get => _Lista_Productos; set => _Lista_Productos = value; }
         public string? Fecha { get => _Fecha; set => _Fecha = value; }
         public int? Monto { get => _Monto; set => _Monto = value; }
 
-        public CVentas(string codigo_Venta, string codigo_cliente, CListaEnlazada lista_Productos, string fecha, int monto)
+        public CVentas(string codigo_Venta, string codigo_cliente, string? lista_Productos, string fecha, int monto)
         {
             Codigo_Venta = codigo_Venta;
             Codigo_Cliente = codigo_cliente;
@@ -30,6 +30,12 @@ namespace ProyectoFarmacia
             Console.WriteLine("Productos: " + Lista_Productos);
             Console.WriteLine("Fecha: " + Fecha);
             Console.WriteLine("Monto: " + Monto);
+            Console.WriteLine("--------------------------");
+        }
+
+        public string fecha()
+        {
+            return Fecha;
         }
 
         public override string ToString()
@@ -54,16 +60,40 @@ namespace ProyectoFarmacia
 
     public class CListaVentas : CListaEnlazada
     {
-        public override void Listar()
+        public void IngresarVenta()
         {
+            Console.Write("Ingrese el codigo de la venta: ");
+            string codigo_venta = Console.ReadLine();
+            Console.Write("Ingrese el codigo del cliente: ");
+            string codigo_cliente = Console.ReadLine();
+            Console.Write("Ingrese el número de productos: ");
+            string Producto = Console.ReadLine();
+            Console.Write("Ingrese la fecha de la venta: ");
+            string fecha = Console.ReadLine();
+            Console.Write("Ingrese el montode la venta: ");
+            int monto = int.Parse(Console.ReadLine());
+            CVentas Venta = new(codigo_venta, codigo_cliente, Producto, fecha, monto);
+            Agregar(Venta);
+            Venta.Monstrar();
+        }
+
+
+        public void ListarFecha()
+        {
+            Console.WriteLine("Ingrese una fecha");
+            string fecha = Console.ReadLine();
             CNodoLista? Aux = Node;
+            Console.WriteLine("------------Ventas {0}--------", ((CVentas)Aux.Element).fecha());
             for (int i = 0; i < Longitud(); i++)
             {
-                Console.WriteLine("------------Ventas{0}--------", i + 1);
-                ((CVentas)Aux.Element).Monstrar();
+                if (((CVentas)Aux.Element).fecha() == fecha)
+                    ((CVentas)Aux.Element).Monstrar();
+                if (i == Longitud())
+                    Console.WriteLine("No hay ventas en {0}", fecha);
                 Aux = Aux.NextNode;
             }
-
         }
     }
 }
+
+

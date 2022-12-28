@@ -110,16 +110,7 @@ namespace ProyectoFarmacia
                     Clientes.Modificar();
                     break;
                 case 8:
-                    Console.Write("Ingrese el codigo de la venta: ");
-                    string codigo_venta;
-                    Console.Write("Ingrese el codigo del cliente: ");
-                    string codigo_cliente = Console.ReadLine();
-                    Console.Write("Ingrese el codigo del producto: ");
-                    // ListaEnlazada lista_productos = new();
-                    Console.Write("Ingrese la fecha de la veta: ");
-                    string fecha;
-                    Console.Write("Ingrese el montode la venta: ");
-                    int monto;
+                    Ventas.IngresarVenta();
                     break;
                 case 9:
                     break;
