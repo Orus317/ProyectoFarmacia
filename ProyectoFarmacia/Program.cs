@@ -3,14 +3,17 @@ using ProyectoFarmacia;
 
 // Creando lista de productos
 CListaProductos Productos = new();
-
-//Leyendo el archivo csv
+CListaClientes Clientes = new();
+CListaVentas Ventas = new();
+// Lector del archivo csv para generar la lista CLisaProductos
 using (StreamReader reader = new(@".\farmacia.csv", Encoding.GetEncoding("iso-8859-1")))
 {
+	// Omitir la primera línea
 	reader.ReadLine();
+	// Leer todas las líneas del archivo 
 	while (!reader.EndOfStream)
 	{
-		string? codigo, nombre, descripcion, proveedor;
+		string codigo, nombre, descripcion, proveedor;
 		DateTime fechaFabricacion, fechaVencimiento;
 		float precio;
 		// Leyendo la linea
@@ -30,3 +33,7 @@ using (StreamReader reader = new(@".\farmacia.csv", Encoding.GetEncoding("iso-88
 	}
 }
 
+while (true)
+{
+	CMenu.MostrarMenu(Clientes, Productos, Ventas);
+}
