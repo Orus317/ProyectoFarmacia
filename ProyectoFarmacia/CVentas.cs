@@ -30,7 +30,7 @@ namespace ProyectoFarmacia
             Console.WriteLine("Productos: " + Lista_Productos);
             Console.WriteLine("Fecha: " + Fecha);
             Console.WriteLine("Monto: " + Monto);
-            Console.WriteLine("--------------------------");
+            Console.WriteLine("---------------------------------");
         }
 
         public string fecha()
