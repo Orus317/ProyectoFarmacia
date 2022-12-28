@@ -65,95 +65,69 @@ namespace ProyectoFarmacia
             }
             return opcion;
         }
-        public static void MostrarMenu(CListaEnlazada Clientes, CListaEnlazada Productos, CListaEnlazada Ventas)
+        public static void MostrarMenu(CListaClientes Clientes, CListaProductos Productos, CListaVentas Ventas)
         {
             Console.WriteLine("=====================================");
             Console.WriteLine("1.- Agregar Producto");
             Console.WriteLine("2.- Buscar Producto");
             Console.WriteLine("3.- Eliminar producto");
             Console.WriteLine("4.- Modificar producto");
-            Console.WriteLine("5.- Registrar Clientes ");
-            Console.WriteLine("6.- Buscar Clientes");
-            Console.WriteLine("7.- Registrar Ventas ");
-            Console.WriteLine("8.- Mostrar reporte ventas diarias (reporte diario)");
-            Console.WriteLine("9.- Visualizar Productos.");
-            Console.WriteLine("10.- Visualizar Clientes.");
+            Console.WriteLine("5.- Registrar Cliente");
+            Console.WriteLine("6.- Buscar Cliente");
+            Console.WriteLine("7.- Modificar Cliente");
+            Console.WriteLine("8.- Registrar Ventas ");
+            Console.WriteLine("9.- Mostrar reporte ventas diarias (reporte diario)");
+            Console.WriteLine("10.- Visualizar Productos.");
+            Console.WriteLine("11.- Visualizar Clientes.");
 
             Console.WriteLine(" -- Ingrese la opción: ");
-            int Opcion = ValidarEntero("Debe ingresar un número, entre 1 y 10", 1, 10);
+            int Opcion = ValidarEntero("Debe ingresar un número, entre 1 y 10", 1, 11);
             EjecutarOpcion(Opcion, Clientes, Productos, Ventas);
         }
-        private static void EjecutarOpcion(int opcion, CListaEnlazada Clientes, CListaEnlazada Productos, CListaEnlazada Ventas)
+        private static void EjecutarOpcion(int opcion, CListaClientes Clientes, CListaProductos Productos, CListaVentas Ventas)
         {
             switch (opcion)
             {
                 case 1:
-                    Console.WriteLine("--------");
-                    Console.Write("Ingrese el codigo del producto: ");
-                    string codigo = Console.ReadLine();
-                    Console.Write("Ingrese nombre del producto: ");
-                    string nombre = Console.ReadLine();
-                    Console.WriteLine("Ingrese la descripcción del producto");
-                    string descripcion = Console.ReadLine();
-                    Console.WriteLine("Ingrese la fecha de fabricación en formato dd/mm/yy: ");
-                    DateTime fecha_fabricacion = DateTime.Parse(Console.ReadLine());
-                    Console.WriteLine("Ingrese la fecha de vencimiento en formato dd/mm/yy: ");
-                    DateTime fecha_vencimiento = DateTime.Parse(Console.ReadLine());
-                    Console.WriteLine("Ingrese el proveedor: ");
-                    string proveedor = Console.ReadLine();
-                    Console.WriteLine("Ingrese el precio: ");
-                    float precio = int.Parse(Console.ReadLine());
-                    CProducto producto_nuevo = new(codigo, nombre, descripcion, fecha_fabricacion, fecha_vencimiento, proveedor, precio);
-                    Productos.Agregar(producto_nuevo);
-                    Console.WriteLine("--------");
+                    Productos.AgregarProducto();
                     break;
                 case 2:
-                    Console.Write("Ingrese el codigo del producto: ");
-                    codigo = Console.ReadLine();
+                    Productos.BuscarProducto();
                     break;
-                case 3:    
-                    Console.Write("Ingrese el codigo del producto: ");
-                    codigo = Console.ReadLine();
+                case 3:
+                    Productos.EliminarProducto();
                     break;
                 case 4:
-                    Console.Write("Ingrese el codigo del producto: ");
-                    codigo = Console.ReadLine();
+                    Productos.Modificar();
                     break;
                 case 5:
-                    Console.Write("Ingrese el codigo del cliente: ");
-                    string codigo_cliente = Console.ReadLine();
-                    Console.Write("Ingrese el nombre del cliente: ");
-                    string nombre_cliente = Console.ReadLine(); ;
-                    Console.Write("Ingrese los apellidos del cliente: ");
-                    string apellido_ciente = Console.ReadLine();
-                    Console.Write("Ingrese el la dirección del cliente: ");
-                    string direccion = Console.ReadLine();
-                    CCliente cliente_nuevo = new(codigo_cliente, nombre_cliente, apellido_ciente, direccion);
-                    Clientes.Agregar(cliente_nuevo);
-                    Console.WriteLine("--------");
+                    Clientes.AgregarCliente();
                     break;
                 case 6:
-                    Console.Write("Ingrese el codigo del cliente: ");
-                    codigo_cliente = Console.ReadLine();
+                    Clientes.Buscar();
                     break;
                 case 7:
+                    Clientes.Modificar();
+                    break;
+                case 8:
                     Console.Write("Ingrese el codigo de la venta: ");
                     string codigo_venta;
                     Console.Write("Ingrese el codigo del cliente: ");
-                    codigo_cliente = Console.ReadLine();
+                    string codigo_cliente = Console.ReadLine();
                     Console.Write("Ingrese el codigo del producto: ");
                     // ListaEnlazada lista_productos = new();
                     Console.Write("Ingrese la fecha de la veta: ");
                     string fecha;
                     Console.Write("Ingrese el montode la venta: ");
                     int monto;
-
-                    break;
-                case 8:
                     break;
                 case 9:
                     break;
                 case 10:
+                    Productos.Listar();
+                    break;
+                case 11:
+                    Clientes.Listar();
                     break;
                 default:
                     break;
