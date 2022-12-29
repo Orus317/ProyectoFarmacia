@@ -89,7 +89,7 @@ namespace ProyectoFarmacia
         }
         public void ListarFecha()
         {
-            Console.WriteLine("Ingrese una fecha");
+            Console.WriteLine("Ingrese una fecha: [dd/mm/aa]");
             string fecha = Console.ReadLine();
             int a = 0;
             CNodoLista? Aux = Node;
