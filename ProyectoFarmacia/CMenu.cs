@@ -76,13 +76,13 @@ namespace ProyectoFarmacia
             Console.WriteLine("6.- Buscar Cliente");
             Console.WriteLine("7.- Modificar Cliente");
             Console.WriteLine("8.- Registrar Ventas ");
-            Console.WriteLine("9.- Vesualizar todas las ventas ");
+            Console.WriteLine("9.- Visualizar todas las ventas ");
             Console.WriteLine("10.- Mostrar reporte ventas diarias (reporte diario)");
             Console.WriteLine("11.- Visualizar Productos.");
             Console.WriteLine("12.- Visualizar Clientes.");
 
-            Console.WriteLine(" -- Ingrese la opción: ");
-            int Opcion = ValidarEntero("Debe ingresar un número, entre 1 y 10", 1, 11);
+            Console.Write(" -- Ingrese la opción: ");
+            int Opcion = ValidarEntero("Debe ingresar un número, entre 1 y 12", 1, 12);
             EjecutarOpcion(Opcion, Clientes, Productos, Ventas);
         }
         private static void EjecutarOpcion(int opcion, CListaClientes Clientes, CListaProductos Productos, CListaVentas Ventas)
