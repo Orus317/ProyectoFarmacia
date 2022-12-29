@@ -34,17 +34,28 @@ using (StreamReader reader = new(@".\farmacia.csv", Encoding.GetEncoding("iso-88
 	}
 }
 
-// Lista de clientes
-Clientes.Agregar(new CCliente("95961212", "Elías", "Vicente Carballo", "3467 Tawny Terrace"));
-Clientes.Agregar(new CCliente("36192134", "Marcos", "Gras Lastra", "837 Middle Diversion"));
-Clientes.Agregar(new CCliente("85586251", "Marcial", " Rivero Grau", "4430 Quaking Anchor Ramp"));
-Clientes.Agregar(new CCliente("85143178", "Jose", " Francisco Jáuregui Cortés", "6913 Golden Cider Park"));
-Clientes.Agregar(new CCliente("45686143", "Ofelia", " Zabaleta Miralles", "7712 Jagged Pine Passage"));
-Clientes.Agregar(new CCliente("82784817", "África", " Soledad Ruiz Piñol", "3302 Colonial Dale Meadow"));
-Clientes.Agregar(new CCliente("01278535", "Erasmo", " Mauricio Ortuño Ordóñez", "8773 Clear View"));
-Clientes.Agregar(new CCliente("34480959", "Cristian", " Herrero Puente", "9306 Amber Inlet"));
-Clientes.Agregar(new CCliente("05196068", "Eustaquio", " Yáñez-Ballesteros", "750 Cotton Highway"));
-Clientes.Agregar(new CCliente("97218107", "Joaquina", " Milagros Zamora Saez", "3775 Cinder Autoroute"));
+// Lector del archivo csv para generar la lista de clientes 
+using (StreamReader reader = new(@".\clientes.csv", Encoding.GetEncoding("iso-8859-1")))
+{
+	// Omitir la primera línea
+	reader.ReadLine();
+	// Leer todas las líneas del archivo 
+	while (!reader.EndOfStream)
+	{
+		string codigo, nombre, apellido, direccion;
+		// Leyendo la linea
+		string? line = reader.ReadLine();
+		// Separando valores por ";"
+		string[] values = line.Split(";");
+		// Asignaciones
+		codigo = values[0];
+		nombre = values[1];
+		apellido = values[2];
+		direccion = values[3];
+		//Agregar el producto a la lista de productos
+        Clientes.Agregar(new CCliente(codigo, nombre, apellido, direccion));
+	}
+}
 
 // Lista de Ventas
 
