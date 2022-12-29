@@ -4,21 +4,21 @@ namespace ProyectoFarmacia
     {
         private string? _Codigo_Venta;
         private string? _Codigo_Cliente;
-        private string? Producto;
+        private string? _Producto;
         private string? _Fecha;
         private int? _Monto;
 
         public string? Codigo_Venta { get => _Codigo_Venta; set => _Codigo_Venta = value; }
         public string? Codigo_Cliente { get => _Codigo_Cliente; set => _Codigo_Cliente = value; }
-        public string? Lista_Productos { get => Producto; set => Producto = value; }
+        public string? _Productos { get => _Producto; set => _Producto = value; }
         public string? Fecha { get => _Fecha; set => _Fecha = value; }
         public int? Monto { get => _Monto; set => _Monto = value; }
 
-        public CVentas(string codigo_Venta, string codigo_cliente, string? Producto, string fecha, int monto)
+        public CVentas(string codigo_Venta, string codigo_cliente, string? producto, string fecha, int monto)
         {
             Codigo_Venta = codigo_Venta;
             Codigo_Cliente = codigo_cliente;
-            Lista_Productos = Producto;
+            _Productos = producto;
             Fecha = fecha;
             Monto = monto;
         }
@@ -27,7 +27,7 @@ namespace ProyectoFarmacia
         {
             Console.WriteLine("Venta: " + Codigo_Venta);
             Console.WriteLine("Cliente: " + Codigo_Cliente);
-            Console.WriteLine("Productos: " + Lista_Productos);
+            Console.WriteLine("Productos: " + _Productos);
             Console.WriteLine("Fecha: " + Fecha);
             Console.WriteLine("Monto: " + Monto);
             Console.WriteLine("---------------------------------");
