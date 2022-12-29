@@ -7,7 +7,7 @@ CListaClientes Clientes = new();
 CListaVentas Ventas = new();
 
 // Lector del archivo csv para generar la lista CLisaProductos
-using (StreamReader reader = new(@".\farmacia.csv", Encoding.GetEncoding("iso-8859-1")))
+using (StreamReader reader = new("./farmacia.csv", Encoding.GetEncoding("iso-8859-1")))
 {
 	// Omitir la primera línea
 	reader.ReadLine();
@@ -25,8 +25,8 @@ using (StreamReader reader = new(@".\farmacia.csv", Encoding.GetEncoding("iso-88
 		codigo = values[0];
 		nombre = values[1];
 		descripcion = values[2];
-		fechaFabricacion = DateTime.Parse(values[3]);
-		fechaVencimiento = DateTime.Parse(values[4]);
+		fechaFabricacion = DateTime.ParseExact(values[3],"dd/MM/yyyy", null);
+		fechaVencimiento = DateTime.ParseExact(values[4],"dd/MM/yyyy", null);
 		proveedor = values[5];
 		precio = float.Parse(values[6]);
 		//Agregar el producto a la lista de productos
@@ -35,7 +35,7 @@ using (StreamReader reader = new(@".\farmacia.csv", Encoding.GetEncoding("iso-88
 }
 
 // Lector del archivo csv para generar la lista de clientes 
-using (StreamReader reader = new(@".\clientes.csv", Encoding.GetEncoding("iso-8859-1")))
+using (StreamReader reader = new("./clientes.csv", Encoding.GetEncoding("iso-8859-1")))
 {
 	// Omitir la primera línea
 	reader.ReadLine();
