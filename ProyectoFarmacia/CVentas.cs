@@ -68,9 +68,9 @@ namespace ProyectoFarmacia
             string codigo_cliente = Console.ReadLine();
             Console.Write("Ingrese el código del producto: ");
             string Producto = Console.ReadLine();
-            Console.Write("Ingrese la fecha de la venta: ");
+            Console.Write("Ingrese la fecha de la venta: [dd/mm/aa]");
             string fecha = Console.ReadLine();
-            Console.Write("Ingrese el montode la venta: ");
+            Console.Write("Ingrese el monto de la venta: ");
             int monto = int.Parse(Console.ReadLine());
             CVentas Venta = new(codigo_venta, codigo_cliente, Producto, fecha, monto);
             Agregar(Venta);
